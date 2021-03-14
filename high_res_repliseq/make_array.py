@@ -70,4 +70,4 @@ def scalingto100range(avmatrix):
 sm_mat=walksmoothing(rawcoveragematrix)
 scaledmat=scalingto100range(sm_mat)
 
-pd.concat((binsizefile.T,pd.DataFrame(scaledmat))).to_csv(out,index=None,sep='\t')
+pd.concat((binsizefile.T,pd.DataFrame(scaledmat))).to_csv(out,index=None,sep='\t',header=None)
