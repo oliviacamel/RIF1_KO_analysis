@@ -14,7 +14,7 @@ import functools
 
 
 
-parser = argparse.ArgumentParser(description='The script creates normalised high-res Repli-seq arrays, from which further calculations can be made.')
+parser = argparse.ArgumentParser(description='The script creates normalised high-res Repli-seq arrays, from which further calculations can be made.Example usage: python make_array.py -i H9_RIF1KO_32 -o H9_RIF1KO_32_Repli-seq_array.txt -binsize hg38.chrom.sizes.50000.bed')
 parser.add_argument('-i', action = 'store', dest = 'input_prefix', required = True, type=str, help='prefix for input file')
 parser.add_argument('-o', action = 'store', dest = 'output_file', required = True, type=str, help='output file name')
 parser.add_argument('-binsize', action = 'store', dest = 'binsize_file', required = True, type=str, help='binsize file used to define array columns')
