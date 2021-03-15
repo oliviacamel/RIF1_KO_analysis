@@ -13,7 +13,7 @@ import argparse
 import warnings
 warnings.simplefilter("error")     
 
-parser = argparse.ArgumentParser(description='The script calculates Twidth, time taken from 25% to 75% replicated. It is a measure of replication heterogeneity within the population. The output will contain 2 columns, Trep: the time taken for the locus to be 50% replicated, Twidth: the time taken for the locus to go from 25% to 75% replicated.')
+parser = argparse.ArgumentParser(description='The script calculates Twidth, time taken from 25% to 75% replicated. It is a measure of replication heterogeneity within the population. The output will contain 2 columns, Trep: the time taken for the locus to be 50% replicated, Twidth: the time taken for the locus to go from 25% to 75% replicated. Example usage: python Twidth_calculation.py -i H9_RIF1KO_32_output_Repli-seq_array.txt -o H9_RIF1KO_32_Trep_Twidth.txt')
 parser.add_argument('-i', action = 'store', dest = 'input_file', required = True, type=str, help='input file containing normalised and scaled repli-seq data array')
 parser.add_argument('-o', action = 'store', dest = 'output_file', required = True, type=str, help='output file name')
 0
