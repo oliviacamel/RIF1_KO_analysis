@@ -70,7 +70,10 @@ def bychr(chrom):
     a,b=np.where(binsizefile.iloc[:,0]==chrom)[0][0],np.where(binsizefile.iloc[:,0]==chrom)[0][-1]
     newmat=walksmoothing(rawcoveragematrix[:,a:b+1])
     return (newmat)
-sm_mat=walksmoothing(rawcoveragematrix)
+with Pool() as pool:
+    output=pool.map(bychr, ['chr'+str(i) for i in range(1,23)])
+    
+sm_mat=np.concatenate(output,axis=1)
 scaledmat=scalingto100range(sm_mat)
 
 pd.concat((binsizefile.T,pd.DataFrame(scaledmat))).to_csv(out,index=None,sep='\t',header=None)
