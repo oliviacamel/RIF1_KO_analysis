@@ -11,7 +11,7 @@ import argparse
 import pandas as pd
 import numpy as np
 import functools
-
+from multiprocessing import Pool
 
 
 parser = argparse.ArgumentParser(description='The script creates normalised high-res Repli-seq arrays, from which further calculations can be made.Example usage: python make_array.py -i H9_RIF1KO_32 -o H9_RIF1KO_32_Repli-seq_array.txt -binsize hg38.chrom.sizes.50000.bed')
@@ -66,7 +66,10 @@ def scalingto100range(avmatrix):
             except:
                 mat_scaled[i][j]=np.nan
     return (mat_scaled)
-
+def bychr(chrom):
+    a,b=np.where(binsizefile.iloc[:,0]==chrom)[0][0],np.where(binsizefile.iloc[:,0]==chrom)[0][-1]
+    newmat=walksmoothing(rawcoveragematrix[:,a:b+1])
+    return (newmat)
 sm_mat=walksmoothing(rawcoveragematrix)
 scaledmat=scalingto100range(sm_mat)
 
